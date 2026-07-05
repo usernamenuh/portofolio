@@ -556,6 +556,65 @@ function ProjectDetailsModal({ project, onClose }) {
   )
 }
 
+function CertificateModal({ certificate, onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') onClose()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
+
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <motion.div
+        className="modal-content"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 30, scale: 0.95 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+      >
+        <button className="modal-close" onClick={onClose} aria-label="Close modal">
+          <FaTimes />
+        </button>
+
+        <div className="modal-body-layout">
+          <div className="modal-image-panel">
+            <div className="modal-active-viewport">
+              <iframe
+                src={certificate.pdf}
+                title={certificate.title}
+                className="certificate-pdf-viewer"
+              />
+            </div>
+          </div>
+
+          <div className="modal-info-panel">
+            <div className="modal-header-meta">
+              <h2>{certificate.title}</h2>
+            </div>
+            <div className="modal-description-section">
+              <p className="modal-long-desc">{certificate.issuer}</p>
+            </div>
+            <div className="modal-footer-actions">
+              <a href={certificate.pdf} target="_blank" rel="noreferrer" className="button">
+                Open PDF in new tab
+              </a>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  )
+}
+
 function Projects({ onSelectProject }) {
   return (
     <Section id="projects" eyebrow="Projects 🚀" title="Selected work with product depth">
@@ -651,30 +710,29 @@ function Education() {
   )
 }
 
-function Certifications() {
+function Certifications({ onSelectCertificate }) {
   return (
     <Section id="certifications" eyebrow="Certifications 🏅" title="Learning and certification">
       <div className="certification-grid">
         {certifications.map((item, index) => (
           <MotionCard key={item.title} className="certification-card" delay={index * 0.04}>
-            <a
+            <button
+              type="button"
               className="certificate-preview"
-              href={item.image}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`View certificate ${item.title}`}
+              onClick={() => onSelectCertificate(item)}
+              aria-label={`View details for ${item.title}`}
             >
               <img src={item.image} alt={`${item.title} certificate`} loading="lazy" />
-            </a>
+            </button>
             <div className="certificate-content">
               <span>{String(index + 1).padStart(2, '0')}</span>
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.issuer}</p>
               </div>
-              <a href={item.image} target="_blank" rel="noreferrer">
-                View Certificate
-              </a>
+              <button type="button" className="button" onClick={() => onSelectCertificate(item)}>
+                View Details
+              </button>
             </div>
           </MotionCard>
         ))}
@@ -754,6 +812,7 @@ function Footer() {
 function App() {
   const [theme, setTheme] = useState('light')
   const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedCertificate, setSelectedCertificate] = useState(null)
 
   function toggleTheme() {
     setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'))
@@ -761,7 +820,7 @@ function App() {
 
   return (
     <div className="app-shell" data-theme={theme}>
-      {!selectedProject && <Navbar theme={theme} onToggleTheme={toggleTheme} />}
+      {!selectedProject && !selectedCertificate && <Navbar theme={theme} onToggleTheme={toggleTheme} />}
       <main>
         <Hero />
         <About />
@@ -769,7 +828,7 @@ function App() {
         <Projects onSelectProject={setSelectedProject} />
         <Experience />
         <Education />
-        <Certifications />
+        <Certifications onSelectCertificate={setSelectedCertificate} />
         <Contact />
       </main>
       <Footer />
@@ -778,6 +837,12 @@ function App() {
         <ProjectDetailsModal
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
+        />
+      )}
+      {selectedCertificate && (
+        <CertificateModal
+          certificate={selectedCertificate}
+          onClose={() => setSelectedCertificate(null)}
         />
       )}
     </div>

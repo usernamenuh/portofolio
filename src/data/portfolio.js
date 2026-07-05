@@ -6,7 +6,6 @@ import {
   FaGithub,
   FaInstagram,
   FaLinkedin,
-  FaPhone,
   FaReact,
 } from 'react-icons/fa'
 import {
@@ -18,14 +17,23 @@ import {
 } from 'react-icons/si'
 import { MdEmail } from 'react-icons/md'
 import belajarDasarAI from '../assets/sertifikat/BelajarDasarAI.jpg'
+import belajarDasarAIpdf from '../assets/sertifikat/BelajarDasarAI.pdf'
 import belajarDasarCloudAWS from '../assets/sertifikat/BelajarDasarCloudeDanGenAIdiAWS.jpg'
+import belajarDasarCloudAWSpdf from '../assets/sertifikat/BelajarDasarCloudeDanGenAIdiAWS.pdf'
 import belajarDasarGit from '../assets/sertifikat/BelajarDasarGitDanGithub.jpg'
+import belajarDasarGitpdf from '../assets/sertifikat/BelajarDasarGitDanGithub.pdf'
 import belajarMachineLearning from '../assets/sertifikat/BelajarMachineLearningUntukPemula.jpg'
+import belajarMachineLearningpdf from '../assets/sertifikat/BelajarMachineLearningUntukPemula.pdf'
 import financialLiteracy from '../assets/sertifikat/IntroductionToFinancialLiteracy.jpg'
+import financialLiteracypdf from '../assets/sertifikat/IntroductionToFinancialLiteracy.pdf'
 import membangunDeepLearning from '../assets/sertifikat/MembangunProyekDeepLearningTingkatMahir.jpg'
+import membangunDeepLearningpdf from '../assets/sertifikat/MembangunProyekDeepLearningTingkatMahir.pdf'
 import pemrogramanSoftware from '../assets/sertifikat/MemulaiDasarPemrogramanUntukMenjadiPengembangSoftware.jpg'
+import pemrogramanSoftwarepdf from '../assets/sertifikat/MemulaiDasarPemrogramanUntukMenjadiPengembangSoftware.pdf'
 import pemrogramanPython from '../assets/sertifikat/MemulaiPemrogramanDenganPython.jpg'
+import pemrogramanPythonpdf from '../assets/sertifikat/MemulaiPemrogramanDenganPython.pdf'
 import logikaPemrograman from '../assets/sertifikat/PengenalanKeLogikaPemrograman.jpg'
+import logikaPemrogramanpdf from '../assets/sertifikat/PengenalanKeLogikaPemrograman.pdf'
 
 export const profile = {
   name: 'Muhammad Enuh',
@@ -34,16 +42,14 @@ export const profile = {
   intro:
     'Software Engineering student with a strong interest in Artificial Intelligence, Machine Learning, Deep Learning, and modern web application development using Laravel, PHP, React, Express.js, MySQL, PostgreSQL, and RESTful APIs.',
   email: 'muhammaden613@gmail.com',
-  phone: '085624139159',
   location: 'Greater Bandung',
   linkedin: 'https://www.linkedin.com/in/muhammadenuh',
   cvUrl: '/cv.pdf',
   socials: [
-    { label: 'GitHub', href: 'https://github.com/', icon: FaGithub },
+    { label: 'GitHub', href: 'https://github.com/usernamenuh', icon: FaGithub },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammadenuh', icon: FaLinkedin },
-    { label: 'Instagram', href: 'https://instagram.com/', icon: FaInstagram },
-    { label: 'Email', href: 'mailto:muhammaden613@gmail.com', icon: MdEmail },
-    { label: 'Phone', href: 'tel:085624139159', icon: FaPhone },
+    { label: 'Instagram', href: 'https://www.instagram.com/3mnuhh', icon: FaInstagram },
+    { label: 'Email', href: 'mailto:muhammadenuh4@gmail.com', icon: MdEmail },
   ],
 }
 
@@ -172,45 +178,54 @@ export const certifications = [
     title: 'Belajar Dasar AI',
     issuer: 'Dicoding Indonesia',
     image: belajarDasarAI,
+    pdf: belajarDasarAIpdf,
   },
   {
     title: 'Belajar Machine Learning untuk Pemula',
     issuer: 'Dicoding Indonesia',
     image: belajarMachineLearning,
+    pdf: belajarMachineLearningpdf,
   },
   {
     title: 'Membangun Proyek Deep Learning Tingkat Mahir',
     issuer: 'Dicoding Indonesia',
     image: membangunDeepLearning,
+    pdf: membangunDeepLearningpdf,
   },
   {
     title: 'Memulai Pemrograman dengan Python',
     issuer: 'Dicoding Indonesia',
     image: pemrogramanPython,
+    pdf: pemrogramanPythonpdf,
   },
   {
     title: 'Belajar Dasar Git dengan GitHub',
     issuer: 'Dicoding Indonesia',
     image: belajarDasarGit,
+    pdf: belajarDasarGitpdf,
   },
   {
     title: 'Belajar Dasar Cloud dan Gen AI di AWS',
     issuer: 'Dicoding Indonesia',
     image: belajarDasarCloudAWS,
+    pdf: belajarDasarCloudAWSpdf,
   },
   {
     title: 'Memulai Dasar Pemrograman untuk Menjadi Pengembang Software',
     issuer: 'Dicoding Indonesia',
     image: pemrogramanSoftware,
+    pdf: pemrogramanSoftwarepdf,
   },
   {
     title: 'Pengenalan ke Logika Pemrograman',
     issuer: 'Dicoding Indonesia',
     image: logikaPemrograman,
+    pdf: logikaPemrogramanpdf,
   },
   {
     title: 'Introduction to Financial Literacy',
     issuer: 'Dicoding Indonesia',
     image: financialLiteracy,
+    pdf: financialLiteracypdf,
   },
 ]
