@@ -46,7 +46,7 @@ export const profile = {
   email: 'muhammaden613@gmail.com',
   location: 'Greater Bandung',
   linkedin: 'https://www.linkedin.com/in/muhammadenuh',
-  cvUrl: '/cv.pdf',
+  cvUrl: "/images/CVMuhammadEnuh.pdf",
   socials: [
     { label: 'GitHub', href: 'https://github.com/usernamenuh', icon: FaGithub },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammadenuh', icon: FaLinkedin },
