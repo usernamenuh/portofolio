@@ -422,6 +422,7 @@ function ProjectDetailsModal({ project, onClose }) {
   const [activeImgIndex, setActiveImgIndex] = useState(0)
   const [isAnimatedIn, setIsAnimatedIn] = useState(false)
   const [isImgLoaded, setIsImgLoaded] = useState(false)
+  const [showThumbnails, setShowThumbnails] = useState(false)
 
   useEffect(() => {
     // Lock scroll
@@ -437,11 +438,17 @@ function ProjectDetailsModal({ project, onClose }) {
     const timer = setTimeout(() => {
       setIsAnimatedIn(true)
     }, 350)
+
+    // Delay thumbnails loading to prevent browser lag due to loading many heavy images at once
+    const thumbTimer = setTimeout(() => {
+      setShowThumbnails(true)
+    }, 700)
     
     return () => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
       clearTimeout(timer)
+      clearTimeout(thumbTimer)
     }
   }, [onClose])
 
@@ -498,16 +505,24 @@ function ProjectDetailsModal({ project, onClose }) {
             </div>
             {images.length > 1 && (
               <div className="modal-thumbnails">
-                {images.map((img, i) => (
-                  <button
-                    key={img.alt}
-                    type="button"
-                    className={`modal-thumb-btn ${i === activeImgIndex ? 'is-active' : ''}`}
-                    onClick={() => setActiveImgIndex(i)}
-                  >
-                    <img src={img.src} alt={`Thumbnail ${img.alt}`} decoding="async" loading="lazy" />
-                  </button>
-                ))}
+                {showThumbnails ? (
+                  images.map((img, i) => (
+                    <button
+                      key={img.alt}
+                      type="button"
+                      className={`modal-thumb-btn ${i === activeImgIndex ? 'is-active' : ''}`}
+                      onClick={() => setActiveImgIndex(i)}
+                    >
+                      <img src={img.src} alt={`Thumbnail ${img.alt}`} decoding="async" loading="lazy" />
+                    </button>
+                  ))
+                ) : (
+                  <div className="thumbnails-placeholder">
+                    <div className="shimmer-thumb"></div>
+                    <div className="shimmer-thumb"></div>
+                    <div className="shimmer-thumb"></div>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -742,6 +757,59 @@ function Certifications({ onSelectCertificate }) {
 }
 
 function Contact() {
+  const [name, setName] = useState('')
+  const [emailAddress, setEmailAddress] = useState('')
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState('idle')
+  const [feedback, setFeedback] = useState('')
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    setStatus('sending')
+    setFeedback('')
+
+    const endpoint = import.meta.env.VITE_SUPABASE_EMAIL_ENDPOINT
+    if (!endpoint) {
+      setStatus('error')
+      setFeedback('Supabase endpoint belum dikonfigurasi. Tambahkan VITE_SUPABASE_EMAIL_ENDPOINT di .env.')
+      return
+    }
+
+    if (!emailRegex.test(emailAddress)) {
+      setStatus('error')
+      setFeedback('Format email tidak valid.')
+      return
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email: emailAddress, message }),
+      })
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null)
+        setStatus('error')
+        setFeedback(result?.error || 'Gagal mengirim pesan. Silakan coba lagi nanti.')
+        return
+      }
+
+      setStatus('success')
+      setFeedback('Pesan berhasil dikirim! Saya akan segera membalas.')
+      setName('')
+      setEmailAddress('')
+      setMessage('')
+    } catch (error) {
+      setStatus('error')
+      setFeedback('Gagal mengirim pesan. Periksa koneksi internet Anda.')
+    }
+  }
+
   return (
     <Section id="contact" eyebrow="Contact" title="Let's build something focused">
       <div className="contact-grid">
@@ -751,26 +819,49 @@ function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          action={`mailto:${profile.email}`}
-          method="post"
-          encType="text/plain"
+          onSubmit={handleSubmit}
         >
           <label>
             Name
-            <input name="name" type="text" autoComplete="name" required />
+            <input
+              name="name"
+              type="text"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              autoComplete="name"
+              required
+            />
           </label>
           <label>
             Email
-            <input name="email" type="email" autoComplete="email" required />
+            <input
+              name="email"
+              type="email"
+              value={emailAddress}
+              onChange={(event) => setEmailAddress(event.target.value)}
+              autoComplete="email"
+              required
+            />
           </label>
           <label>
             Message
-            <textarea name="message" rows="6" required></textarea>
+            <textarea
+              name="message"
+              rows="6"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              required
+            ></textarea>
           </label>
-          <button className="button" type="submit">
-            Send Message
+          <button className="button" type="submit" disabled={status === 'sending'}>
+            {status === 'sending' ? 'Sending...' : 'Send Message'}
             <FaArrowRight aria-hidden="true" />
           </button>
+          {feedback && (
+            <p className={`contact-feedback ${status === 'error' ? 'error' : 'success'}`}>
+              {feedback}
+            </p>
+          )}
         </motion.form>
 
         <div className="contact-panel">
@@ -779,21 +870,23 @@ function Contact() {
             magang atau kerja di bidang software development.
           </p>
           <div className="social-list">
-            {profile.socials.map((social) => {
-              const Icon = social.icon
-              const isExternal = social.href.startsWith('http')
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target={isExternal ? '_blank' : undefined}
-                  rel={isExternal ? 'noreferrer' : undefined}
-                >
-                  <Icon aria-hidden="true" />
-                  <span>{social.label}</span>
-                </a>
-              )
-            })}
+            {profile.socials
+              .filter((social) => social.label !== 'Email')
+              .map((social) => {
+                const Icon = social.icon
+                const isExternal = social.href.startsWith('http')
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noreferrer' : undefined}
+                  >
+                    <Icon aria-hidden="true" />
+                    <span>{social.label}</span>
+                  </a>
+                )
+              })}
           </div>
         </div>
       </div>

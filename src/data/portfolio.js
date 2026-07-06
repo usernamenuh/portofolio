@@ -18,6 +18,8 @@ import {
 import { MdEmail } from 'react-icons/md'
 import belajarDasarAI from '../assets/sertifikat/BelajarDasarAI.jpg'
 import belajarDasarAIpdf from '../assets/sertifikat/BelajarDasarAI.pdf'
+import belajarFundamentalDeepLearning from '../assets/sertifikat/BelajarFundamentalDeepLearning.jpg'
+import belajarFundamentalDeepLearningpdf from '../assets/sertifikat/BelajarFundamentalDeepLearning.pdf'
 import belajarDasarCloudAWS from '../assets/sertifikat/BelajarDasarCloudeDanGenAIdiAWS.jpg'
 import belajarDasarCloudAWSpdf from '../assets/sertifikat/BelajarDasarCloudeDanGenAIdiAWS.pdf'
 import belajarDasarGit from '../assets/sertifikat/BelajarDasarGitDanGithub.jpg'
@@ -191,6 +193,12 @@ export const certifications = [
     issuer: 'Dicoding Indonesia',
     image: membangunDeepLearning,
     pdf: membangunDeepLearningpdf,
+  },
+  {
+    title: 'Belajar Fundamental Deep Learning',
+    issuer: 'Dicoding Indonesia',
+    image: belajarFundamentalDeepLearning,
+    pdf: belajarFundamentalDeepLearningpdf,
   },
   {
     title: 'Memulai Pemrograman dengan Python',
