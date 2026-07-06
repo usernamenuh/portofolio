@@ -1211,31 +1211,37 @@ textarea:focus-visible {
 }
 
 .modal-thumb-btn {
-  flex: 0 0 80px;
-  aspect-ratio: 16 / 10;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: transparent;
-  padding: 0;
+  flex: 0 0 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 750;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 180ms ease;
-}
-
-.modal-thumb-btn img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  padding: 0;
+  user-select: none;
 }
 
 .modal-thumb-btn:hover {
   border-color: var(--accent);
+  color: var(--text);
+  background: var(--card);
 }
 
 .modal-thumb-btn.is-active {
   border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
+
 
 .modal-info-panel {
   padding: 2.25rem;
@@ -1390,8 +1396,9 @@ textarea:focus-visible {
 
   .modal-thumb-btn,
   .shimmer-thumb {
-    flex: 0 0 60px;
-    border-radius: 6px;
+    flex: 0 0 38px;
+    height: 38px;
+    border-radius: 8px;
   }
 
   .modal-info-panel {

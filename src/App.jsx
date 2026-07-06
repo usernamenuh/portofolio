@@ -32,41 +32,7 @@ import { MdMailOutline } from 'react-icons/md'
 import profilePhoto from './assets/foto.JPG'
 import heroPaperPhoto from './assets/fotopaper.png'
 import aboutPaperPhoto from './assets/fotopaper3.png'
-/* ── Kampung Digital images ── */
-import kdLanding from './assets/projectkampungdigital/landingpage.png'
-import kdLogin from './assets/projectkampungdigital/login.png'
-import kdDashboardAdmin from './assets/projectkampungdigital/dashboardadmin.png'
-import kdDashboardKades from './assets/projectkampungdigital/dashoardkades.png'
-import kdDashboardRT from './assets/projectkampungdigital/dashboardrt.png'
-import kdDashboardRW from './assets/projectkampungdigital/dashboardrw.png'
-import kdDashboardMasyarakat from './assets/projectkampungdigital/dashboardmasyarakat.png'
-import kdDataPenduduk from './assets/projectkampungdigital/datapenduduk.png'
-import kdDataKK from './assets/projectkampungdigital/datakartukeluarga.png'
-import kdDataKas from './assets/projectkampungdigital/datakas.png'
-import kdMockupLanding from './assets/projectkampungdigital/mockuplanding.png'
-import kdMockupDashboard from './assets/projectkampungdigital/mockupdashboard.png'
-import kdMockupBerita from './assets/projectkampungdigital/mockupberita.png'
-/* ── FinSight (UMKM) images ── */
-import fsLanding from './assets/projectumkm/landingpage.png'
-import fsLogin from './assets/projectumkm/login.png'
-import fsRegister from './assets/projectumkm/register.png'
-import fsDashboard from './assets/projectumkm/dashboard.png'
-import fsDaftarBisnis from './assets/projectumkm/daftarbisnis.png'
-import fsDaftarPengeluaran from './assets/projectumkm/daftarpengeluaran.png'
-import fsDataPendapatan from './assets/projectumkm/datapendapatan.png'
-import fsMockupLanding from './assets/projectumkm/mockuplaptoplanding.png'
-import fsMockupLandingMac from './assets/projectumkm/mockuplandingmackbook.png'
-import fsMockupDashboard from './assets/projectumkm/dahboardmacbookmockup.png'
-/* ── StressGuard (Capstone) images ── */
-import sgMacbook15 from './assets/projectStressGUard/MacBook Air (15 inch).png'
-import sgMacbook2022 from './assets/projectStressGUard/MacBook Air (2022).png'
-import sgIphone17Mockup from './assets/projectStressGUard/Mockuuups Copy of Free Transparent iPhone 17 Mockup.png'
-import sgDashboard from './assets/projectStressGUard/dashboard.png'
-import sgDashboardAnalisis from './assets/projectStressGUard/dashboardsesudah-ada-analis.png'
-import sgIphone16Mockup from './assets/projectStressGUard/iPhone 16 Pro.jpg'
-import sgLanding from './assets/projectStressGUard/landing-page.png'
-import sgLogin from './assets/projectStressGUard/login.png'
-import sgScreenCapture from './assets/projectStressGUard/screencapture-renewed-mercy-production-9f6c-up-railway-app-2026-06-05-03_00_52.png'
+/* ── Project images are served as optimized WebP from /public/images/ ── */
 import { MotionCard, Section } from './components/Section'
 import {
   certifications,
@@ -328,42 +294,42 @@ function Skills() {
 
 const projectImages = {
   kampungdigital: [
-    { src: kdMockupLanding, alt: 'Landing page mockup' },
-    { src: kdMockupDashboard, alt: 'Dashboard mockup' },
-    { src: kdMockupBerita, alt: 'Berita mockup' },
-    { src: kdLanding, alt: 'Landing page' },
-    { src: kdLogin, alt: 'Login page' },
-    { src: kdDashboardAdmin, alt: 'Dashboard Admin' },
-    { src: kdDashboardKades, alt: 'Dashboard Kepala Desa' },
-    { src: kdDashboardRT, alt: 'Dashboard RT' },
-    { src: kdDashboardRW, alt: 'Dashboard RW' },
-    { src: kdDashboardMasyarakat, alt: 'Dashboard Masyarakat' },
-    { src: kdDataPenduduk, alt: 'Data Penduduk' },
-    { src: kdDataKK, alt: 'Data Kartu Keluarga' },
-    { src: kdDataKas, alt: 'Data Kas' },
+    { src: '/images/kampungdigital/mockuplanding.webp', alt: 'Landing page mockup' },
+    { src: '/images/kampungdigital/mockupdashboard.webp', alt: 'Dashboard mockup' },
+    { src: '/images/kampungdigital/mockupberita.webp', alt: 'Berita mockup' },
+    { src: '/images/kampungdigital/landingpage.webp', alt: 'Landing page' },
+    { src: '/images/kampungdigital/login.webp', alt: 'Login page' },
+    { src: '/images/kampungdigital/dashboardadmin.webp', alt: 'Dashboard Admin' },
+    { src: '/images/kampungdigital/dashoardkades.webp', alt: 'Dashboard Kepala Desa' },
+    { src: '/images/kampungdigital/dashboardrt.webp', alt: 'Dashboard RT' },
+    { src: '/images/kampungdigital/dashboardrw.webp', alt: 'Dashboard RW' },
+    { src: '/images/kampungdigital/dashboardmasyarakat.webp', alt: 'Dashboard Masyarakat' },
+    { src: '/images/kampungdigital/datapenduduk.webp', alt: 'Data Penduduk' },
+    { src: '/images/kampungdigital/datakartukeluarga.webp', alt: 'Data Kartu Keluarga' },
+    { src: '/images/kampungdigital/datakas.webp', alt: 'Data Kas' },
   ],
   finsight: [
-    { src: fsMockupLanding, alt: 'Landing page mockup' },
-    { src: fsMockupLandingMac, alt: 'Landing page MacBook mockup' },
-    { src: fsMockupDashboard, alt: 'Dashboard MacBook mockup' },
-    { src: fsLanding, alt: 'Landing page' },
-    { src: fsLogin, alt: 'Login page' },
-    { src: fsRegister, alt: 'Register page' },
-    { src: fsDashboard, alt: 'Dashboard' },
-    { src: fsDaftarBisnis, alt: 'Daftar Bisnis' },
-    { src: fsDaftarPengeluaran, alt: 'Daftar Pengeluaran' },
-    { src: fsDataPendapatan, alt: 'Data Pendapatan' },
+    { src: '/images/finsight/mockuplaptoplanding.webp', alt: 'Landing page mockup' },
+    { src: '/images/finsight/mockuplandingmackbook.webp', alt: 'Landing page MacBook mockup' },
+    { src: '/images/finsight/dahboardmacbookmockup.webp', alt: 'Dashboard MacBook mockup' },
+    { src: '/images/finsight/landingpage.webp', alt: 'Landing page' },
+    { src: '/images/finsight/login.webp', alt: 'Login page' },
+    { src: '/images/finsight/register.webp', alt: 'Register page' },
+    { src: '/images/finsight/dashboard.webp', alt: 'Dashboard' },
+    { src: '/images/finsight/daftarbisnis.webp', alt: 'Daftar Bisnis' },
+    { src: '/images/finsight/daftarpengeluaran.webp', alt: 'Daftar Pengeluaran' },
+    { src: '/images/finsight/datapendapatan.webp', alt: 'Data Pendapatan' },
   ],
   stressguard: [
-    { src: sgMacbook15, alt: 'MacBook Air 15" Mockup' },
-    { src: sgIphone17Mockup, alt: 'iPhone 17 Mockup' },
-    { src: sgIphone16Mockup, alt: 'iPhone 16 Pro Mockup' },
-    { src: sgMacbook2022, alt: 'MacBook Air 2022 Mockup' },
-    { src: sgDashboardAnalisis, alt: 'Dashboard dengan Hasil Analisis' },
-    { src: sgDashboard, alt: 'Dashboard Prediksi' },
-    { src: sgLanding, alt: 'Landing Page' },
-    { src: sgLogin, alt: 'Login Page' },
-    { src: sgScreenCapture, alt: 'Landing Page Screen Capture' },
+    { src: '/images/stressguard/MacBook_Air_(15_inch).webp', alt: 'MacBook Air 15" Mockup' },
+    { src: '/images/stressguard/Mockuuups_Copy_of_Free_Transparent_iPhone_17_Mockup.webp', alt: 'iPhone 17 Mockup' },
+    { src: '/images/stressguard/iPhone_16_Pro.webp', alt: 'iPhone 16 Pro Mockup' },
+    { src: '/images/stressguard/MacBook_Air_(2022).webp', alt: 'MacBook Air 2022 Mockup' },
+    { src: '/images/stressguard/dashboardsesudah-ada-analis.webp', alt: 'Dashboard dengan Hasil Analisis' },
+    { src: '/images/stressguard/dashboard.webp', alt: 'Dashboard Prediksi' },
+    { src: '/images/stressguard/landing-page.webp', alt: 'Landing Page' },
+    { src: '/images/stressguard/login.webp', alt: 'Login Page' },
+    { src: '/images/stressguard/screencapture-renewed-mercy-production-9f6c-up-railway-app-2026-06-05-03_00_52.webp', alt: 'Landing Page Screen Capture' },
   ],
 }
 
@@ -381,19 +347,21 @@ function ProjectImageCarousel({ title, imageKey }) {
 
   if (images.length === 0) return null
 
+  const activeImage = images[current]
+
   return (
     <div className="project-carousel">
       <div className="carousel-viewport">
-        {images.map((img, i) => (
+        {activeImage && (
           <img
-            key={img.alt}
-            className={`carousel-slide ${i === current ? 'is-active' : ''}`}
-            src={img.src}
-            alt={`${title} – ${img.alt}`}
+            key={activeImage.alt}
+            className="carousel-slide is-active"
+            src={activeImage.src}
+            alt={`${title} – ${activeImage.alt}`}
             loading="lazy"
             decoding="async"
           />
-        ))}
+        )}
       </div>
       {images.length > 1 && (
         <div className="carousel-controls">
@@ -513,7 +481,7 @@ function ProjectDetailsModal({ project, onClose }) {
                       className={`modal-thumb-btn ${i === activeImgIndex ? 'is-active' : ''}`}
                       onClick={() => setActiveImgIndex(i)}
                     >
-                      <img src={img.src} alt={`Thumbnail ${img.alt}`} decoding="async" loading="lazy" />
+                      <span>{String(i + 1).padStart(2, '0')}</span>
                     </button>
                   ))
                 ) : (
