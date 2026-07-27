@@ -36,6 +36,8 @@ import pemrogramanPython from '../assets/sertifikat/MemulaiPemrogramanDenganPyth
 import pemrogramanPythonpdf from '../assets/sertifikat/MemulaiPemrogramanDenganPython.pdf'
 import logikaPemrograman from '../assets/sertifikat/PengenalanKeLogikaPemrograman.jpg'
 import logikaPemrogramanpdf from '../assets/sertifikat/PengenalanKeLogikaPemrograman.pdf'
+import belajarDasarJavaScript from '../assets/sertifikat/BelajarDasarJavaScript.jpg'
+import belajarDasarJavaScriptpdf from '../assets/sertifikat/BelajarDasarJavaScript.pdf'
 
 export const profile = {
   name: 'Muhammad Enuh',
@@ -235,5 +237,11 @@ export const certifications = [
     issuer: 'Dicoding Indonesia',
     image: financialLiteracy,
     pdf: financialLiteracypdf,
+  },
+  {
+    title: 'Belajar Dasar Pemrograman JavaScript',
+    issuer: 'Dicoding Indonesia',
+    image: belajarDasarJavaScript,
+    pdf: belajarDasarJavaScriptpdf,
   },
 ]
